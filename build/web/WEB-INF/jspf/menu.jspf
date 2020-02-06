@@ -1,0 +1,55 @@
+<%-- 
+    Document   : menu
+    Created on : 2020.01.06., 16:21:41
+    Author     : besse
+--%>
+
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        
+          <div class="navbar-header">
+            <a class="navbar-brand" href="index.jsp?page=index">Biciklis weblap</a>
+          </div>
+        
+          <ul class="navbar-nav mr-auto">
+            
+            <%
+                if(!login.isLoggedIn())
+                {
+            %>
+                    <a class="nav-link" href="index.jsp?page=login">Belépés</a>
+                    <a class="nav-link" href="index.jsp?page=register">Regisztráció</a>          
+                    <%
+                }
+            
+                if(login.isLoggedIn())
+                {
+            %>
+                    <li><a class="nav-link" href="index.jsp?page=allNotes">Összes biciklis út</a></li>
+                    <li><a class="nav-link" href="index.jsp?page=newTrip">Új biciklis turát szervezek</a></li>
+                   
+                       <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Adataim
+                          </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item"  href="index.jsp?page=pd">Személyes adataim</a>
+                                <a class="dropdown-item" href="index.jsp?page=pw">Jelszavam megváltoztatása</a>
+                                <a class="dropdown-item" href="index.jsp?page=bicikli">Biciklim adatai</a>
+                            </div>
+                           </li>
+                   <li> <a class="nav-link" href="logout.jsp">Kilépés</a></li>
+                   <li class="nav-link"><%out.println("<h4>Helló " + login.getUsername() + "!</h4>");%></li>
+                   
+            <%
+                }
+            %>
+            
+            
+          </ul>
+        
+    </nav>
+
+

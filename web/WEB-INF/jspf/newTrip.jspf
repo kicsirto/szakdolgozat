@@ -1,0 +1,39 @@
+<%@ page pageEncoding="UTF-8" %>
+
+
+
+        <%
+           
+if(request.getParameter("trips") == null)
+{
+System.out.println("valami2");
+%>
+        <div class="col-sm-5 col-md-push-4">
+        <h1>Adj hozzá új útvonalat!</h1>
+        <form action="index.jsp?page=newTrip" class="form-horizontal" method="POST">
+           Kirándulás neve: <input type="text" name="cim" value=""  class="form-control" />
+           Indulási pont: <input type="text" name="indulas" value=""  class="form-control"/>
+           Érkezési pont:<input type="text" name="vegcel" value=""  class="form-control"/>
+           Dátum: <input type="date" name="mikor" value=""  class="form-control"/>
+           Az út hossza:<input type="text" name="hossz" placeholder="Mértékegységet ne írjon! Kilométerben számoljon!"  class="form-control"/> 
+           A túra leírása:
+           <textarea name="leiras" rows="10" cols="30"  class="form-control"></textarea>
+           
+           <input type="submit" value="Szervezés" name="trips" class="btn btn-success"/>
+        </form>
+        </div>
+        <%
+            }
+          else
+          {
+             
+             System.out.println("Rögzítettem a túrát mostmár elérhető az összes túra oldalon");
+//átirányitás
+          }
+        System.out.println("valami");
+        
+        
+        
+        %>
+
+</div>

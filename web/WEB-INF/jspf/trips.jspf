@@ -1,0 +1,42 @@
+<%@page import="java.sql.ResultSet"%>
+<%@ page pageEncoding="UTF-8" %>
+<h2>Összes jegyzet megjelentése</h2>
+<% //out.print("Felhasználó: " + login.getId() + " " + login.getUsername()); %>
+<div class="col-md-10">
+    <table class="table table-hover">
+                <tr>
+                    <td>Ki szervezi</td><td>címe</td><td>hossz</td><td>indulas</td><td>vegcel</td>
+                    <td>mikor</td><td>leirás</td><td colspan="2">Művelet</td>
+                </tr>
+                <% 
+                    try 
+                    { 
+                        trip.kirandulasSelect();
+                        ResultSet temp = trip.listaLeker(); //lsd. 1. sor import!
+                        while (temp.next())
+                        { 
+            %> 
+                             <tr>
+                    <td><%out.print(temp.getString("nev"));%></td>
+                    <td><%out.print(temp.getString("cim"));%></td>
+                    <td><%out.print(temp.getInt("hossz"));%> km</td>
+                    <td><%out.print(temp.getString("indulas"));%></td>
+                    <td><%out.print(temp.getString("vegcel"));%></td>
+                    <td><%out.print(temp.getString("mikor"));%></td>
+                    <td><%out.print(temp.getString("leiras"));%></td>
+                    <td><a href="modosit.jsp?modId=<%out.print(temp.getInt("id"));%>">
+                            <button class=" btn btn-success">Jelentkezés</button>
+                    </td>
+                </tr>
+            <%          }
+                        
+                    }
+                    catch (Exception e) 
+                    { 
+                        out.print("Ön most nem lát!" + e);
+                        
+                    } 
+                %>
+            </table>
+</div>
+
